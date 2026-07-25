@@ -111,9 +111,7 @@ reconstruction error, with four V cells exceeding $R^2 = 0.40$.
 │   ├── run_gptq_sweep.sh                 # 7-model GPTQ sweep at 4 and 3 bits
 │   └── make_paper_figures.sh             # regenerate every figure and table in the paper
 ├── results/                              # all experimental outputs live here
-│   ├── raw/                              # per-model JSON from the sweep
-│   ├── figures/                          # PDF figures
-│   └── tables/                           # LaTeX tables
+│                       
 ├── paper/
 │   └── component-type-not-reconstruction-error.pdf
 ├── docs/
