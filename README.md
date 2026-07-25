@@ -255,14 +255,7 @@ See [`results/README.md`](results/README.md) for the naming convention and the J
 ## Citation
 
 ```bibtex
-@inproceedings{dewage2026component,
-  title     = {Component Type, Not Reconstruction Error, Predicts Attention
-               Quantization Sensitivity},
-  author    = {Dewage, Kasun and Pensky, Marianna and De Silva, Suranadi},
-  year      = {2026},
-  address   = {Orlando, Florida, USA},
-  note      = {University of Central Florida}
-}
+to appear
 ```
 
 ---
