@@ -199,11 +199,7 @@ make figures   # regenerate all paper figures and tables
 
 ## Reproducing the paper
 
-```bash
-bash scripts/run_rtn_sweep.sh        # 2,144 measurements, 9 models
-bash scripts/run_gptq_sweep.sh       # 1,664 measurements, 7 models
-bash scripts/make_paper_figures.sh   # figures → results/figures, tables → results/tables
-```
+
 
 Experimental configuration used throughout the paper:
 
@@ -240,17 +236,7 @@ the reconstruction-error/sensitivity relationship.
 
 ## Results directory
 
-`results/` is where every experimental artifact lands. It ships with the directory
-structure in place and `.gitkeep` markers so the tree survives a fresh clone. Drop your
-result files into the matching subdirectory:
 
-- `results/raw/` — per-model JSON emitted by the sweep, e.g. `llama2-7b_quant_sensitivity_rtn_g128.json`
-- `results/figures/` — PDF figures produced by the analysis script
-- `results/tables/` — LaTeX tables (`within_component_r2_3bit.tex`, `dominance_3bit.tex`, …)
-
-See [`results/README.md`](results/README.md) for the naming convention and the JSON schema.
-
----
 
 ## Citation
 
