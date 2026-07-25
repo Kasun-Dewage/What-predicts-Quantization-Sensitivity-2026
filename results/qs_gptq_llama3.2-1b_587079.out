@@ -1,0 +1,112 @@
+Sat Apr 18 14:31:17 EDT 2026
+Slurm nodes: evc28
+You were assigned 1 gpu(s)
+
+Currently Loaded Modules:
+  1) cuda/cuda-12.1.0
+
+ 
+
+Sat Apr 18 14:31:20 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 580.105.08             Driver Version: 580.105.08     CUDA Version: 13.0     |
++-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA H100 PCIe               Off |   00000000:CA:00.0 Off |                    0 |
+| N/A   42C    P0             84W /  310W |       0MiB /  81559MiB |      2%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+Running quant sensitivity for model=llama3.2-1b
+  method=gptq  bits=4 3  n_tokens=16384
+  mp=--mp  group_size=128
+  hsens=--compute_hessian_sens  eval_datasets=wikitext2 c4
+  n_calib=2048  downstream_tasks=
+
+################################################################################
+Model: llama3.2-1b  (meta-llama/Llama-3.2-1B)
+  method=gptq  group_size=128  hessian_sens=True  eval_datasets=['wikitext2', 'c4']  cpu_offload=True
+  n_tokens=16384  n_calib_tokens=2048  calib_source=c4
+################################################################################
+FAILED llama3.2-1b: You are trying to access a gated repo.
+Make sure to have access to it at https://huggingface.co/meta-llama/Llama-3.2-1B.
+403 Client Error. (Request ID: Root=1-69e3cdff-4ddd517c159c74d9329c25dd;112b80bc-8855-4059-8631-00d1d626838c)
+
+Cannot access gated repo for url https://huggingface.co/meta-llama/Llama-3.2-1B/resolve/main/config.json.
+Access to model meta-llama/Llama-3.2-1B is restricted and you are not in the authorized list. Visit https://huggingface.co/meta-llama/Llama-3.2-1B to ask for access.
+Traceback (most recent call last):
+  File "/home/ka899837/.local/lib/python3.10/site-packages/huggingface_hub/utils/_http.py", line 403, in hf_raise_for_status
+    response.raise_for_status()
+  File "/home/kdewage/anaconda3/envs/lora/lib/python3.10/site-packages/requests/models.py", line 1024, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 403 Client Error: Forbidden for url: https://huggingface.co/meta-llama/Llama-3.2-1B/resolve/main/config.json
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/kdewage/anaconda3/envs/lora/lib/python3.10/site-packages/transformers/utils/hub.py", line 402, in cached_file
+    resolved_file = hf_hub_download(
+  File "/home/ka899837/.local/lib/python3.10/site-packages/huggingface_hub/utils/_validators.py", line 114, in _inner_fn
+    return fn(*args, **kwargs)
+  File "/home/ka899837/.local/lib/python3.10/site-packages/huggingface_hub/file_download.py", line 1014, in hf_hub_download
+    return _hf_hub_download_to_cache_dir(
+  File "/home/ka899837/.local/lib/python3.10/site-packages/huggingface_hub/file_download.py", line 1121, in _hf_hub_download_to_cache_dir
+    _raise_on_head_call_error(head_call_error, force_download, local_files_only)
+  File "/home/ka899837/.local/lib/python3.10/site-packages/huggingface_hub/file_download.py", line 1662, in _raise_on_head_call_error
+    raise head_call_error
+  File "/home/ka899837/.local/lib/python3.10/site-packages/huggingface_hub/file_download.py", line 1550, in _get_metadata_or_catch_error
+    metadata = get_hf_file_metadata(
+  File "/home/ka899837/.local/lib/python3.10/site-packages/huggingface_hub/utils/_validators.py", line 114, in _inner_fn
+    return fn(*args, **kwargs)
+  File "/home/ka899837/.local/lib/python3.10/site-packages/huggingface_hub/file_download.py", line 1467, in get_hf_file_metadata
+    r = _request_wrapper(
+  File "/home/ka899837/.local/lib/python3.10/site-packages/huggingface_hub/file_download.py", line 283, in _request_wrapper
+    response = _request_wrapper(
+  File "/home/ka899837/.local/lib/python3.10/site-packages/huggingface_hub/file_download.py", line 307, in _request_wrapper
+    hf_raise_for_status(response)
+  File "/home/ka899837/.local/lib/python3.10/site-packages/huggingface_hub/utils/_http.py", line 420, in hf_raise_for_status
+    raise _format(GatedRepoError, message, response) from e
+huggingface_hub.errors.GatedRepoError: 403 Client Error. (Request ID: Root=1-69e3cdff-4ddd517c159c74d9329c25dd;112b80bc-8855-4059-8631-00d1d626838c)
+
+Cannot access gated repo for url https://huggingface.co/meta-llama/Llama-3.2-1B/resolve/main/config.json.
+Access to model meta-llama/Llama-3.2-1B is restricted and you are not in the authorized list. Visit https://huggingface.co/meta-llama/Llama-3.2-1B to ask for access.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/lustre/fs1/home/ka899837/Tensors/MPLORA/MP_LORA_PAPER2/MPLOra_Reconstruction_paper3/src/quant_sensitivity_experiment.py", line 1236, in main
+    result_data = run_model(
+  File "/lustre/fs1/home/ka899837/Tensors/MPLORA/MP_LORA_PAPER2/MPLOra_Reconstruction_paper3/src/quant_sensitivity_experiment.py", line 1005, in run_model
+    tokenizer = AutoTokenizer.from_pretrained(hf_name, trust_remote_code=True)
+  File "/home/kdewage/anaconda3/envs/lora/lib/python3.10/site-packages/transformers/models/auto/tokenization_auto.py", line 854, in from_pretrained
+    config = AutoConfig.from_pretrained(
+  File "/home/kdewage/anaconda3/envs/lora/lib/python3.10/site-packages/transformers/models/auto/configuration_auto.py", line 976, in from_pretrained
+    config_dict, unused_kwargs = PretrainedConfig.get_config_dict(pretrained_model_name_or_path, **kwargs)
+  File "/home/kdewage/anaconda3/envs/lora/lib/python3.10/site-packages/transformers/configuration_utils.py", line 632, in get_config_dict
+    config_dict, kwargs = cls._get_config_dict(pretrained_model_name_or_path, **kwargs)
+  File "/home/kdewage/anaconda3/envs/lora/lib/python3.10/site-packages/transformers/configuration_utils.py", line 689, in _get_config_dict
+    resolved_config_file = cached_file(
+  File "/home/kdewage/anaconda3/envs/lora/lib/python3.10/site-packages/transformers/utils/hub.py", line 420, in cached_file
+    raise EnvironmentError(
+OSError: You are trying to access a gated repo.
+Make sure to have access to it at https://huggingface.co/meta-llama/Llama-3.2-1B.
+403 Client Error. (Request ID: Root=1-69e3cdff-4ddd517c159c74d9329c25dd;112b80bc-8855-4059-8631-00d1d626838c)
+
+Cannot access gated repo for url https://huggingface.co/meta-llama/Llama-3.2-1B/resolve/main/config.json.
+Access to model meta-llama/Llama-3.2-1B is restricted and you are not in the authorized list. Visit https://huggingface.co/meta-llama/Llama-3.2-1B to ask for access.
+All results saved: ./output/quant_sensitivity/all_quant_sensitivity_gptq_g128.json
+
+real	0m7.185s
+user	0m3.101s
+sys	0m3.848s
+COMPLETED llama3.2-1b (method=gptq) at Sat Apr 18 14:31:28 EDT 2026

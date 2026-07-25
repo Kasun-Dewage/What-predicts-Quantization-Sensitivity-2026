@@ -1,0 +1,55 @@
+# ---- Python ----
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# ---- Virtual environments ----
+.venv/
+venv/
+env/
+ENV/
+
+# ---- Jupyter ----
+.ipynb_checkpoints/
+
+# ---- Caches ----
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.cache/
+
+# ---- Model / dataset caches ----
+.cache/huggingface/
+hf_cache/
+*.bin
+*.pt
+*.pth
+*.safetensors
+*.ckpt
+
+# ---- Experiment scratch ----
+output/
+outputs/
+runs/
+logs/
+*.log
+nohup.out
+slurm-*.out
+
+# Resumable sweep checkpoints (regenerated automatically, do not commit)
+results/**/*_checkpoint.json
+
+# ---- OS / editor ----
+.DS_Store
+Thumbs.db
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+.idea/
+*.swp

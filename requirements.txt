@@ -1,0 +1,25 @@
+# Core
+torch>=2.1.0
+transformers>=4.44.0
+datasets>=2.19.0
+accelerate>=0.30.0
+safetensors>=0.4.0
+
+# Numerics and statistics
+numpy>=1.24.0
+scipy>=1.10.0
+
+# Figures
+matplotlib>=3.7.0
+
+# Tokenizer backends required by some checkpoints (LLaMA, Mistral, Qwen)
+sentencepiece>=0.1.99
+protobuf>=3.20.0
+tiktoken>=0.6.0
+
+# Utilities
+tqdm>=4.65.0
+huggingface-hub>=0.23.0
+
+# Optional: only needed for --downstream_tasks
+# lm-eval>=0.4.0

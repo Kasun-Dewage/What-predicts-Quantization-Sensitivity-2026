@@ -1,0 +1,10 @@
+{
+  "recommendations": [
+    "ms-python.python",
+    "ms-toolsai.jupyter",
+    "charliermarsh.ruff",
+    "yzhang.markdown-all-in-one",
+    "James-Yu.latex-workshop",
+    "GitHub.vscode-pull-request-github"
+  ]
+}

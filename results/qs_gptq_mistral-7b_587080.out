@@ -1,0 +1,352 @@
+Sat Apr 18 14:31:20 EDT 2026
+Slurm nodes: evc40
+You were assigned 1 gpu(s)
+
+Currently Loaded Modules:
+  1) cuda/cuda-12.1.0
+
+ 
+
+Sat Apr 18 14:31:25 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 580.105.08             Driver Version: 580.105.08     CUDA Version: 13.0     |
++-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA H100 PCIe               Off |   00000000:CA:00.0 Off |                    0 |
+| N/A   53C    P0             84W /  310W |       0MiB /  81559MiB |      0%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+Running quant sensitivity for model=mistral-7b
+  method=gptq  bits=4 3  n_tokens=16384
+  mp=--mp  group_size=128
+  hsens=--compute_hessian_sens  eval_datasets=wikitext2 c4
+  n_calib=2048  downstream_tasks=
+
+################################################################################
+Model: mistral-7b  (mistralai/Mistral-7B-v0.1)
+  method=gptq  group_size=128  hessian_sens=True  eval_datasets=['wikitext2', 'c4']  cpu_offload=True
+  n_tokens=16384  n_calib_tokens=2048  calib_source=c4
+################################################################################
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|█████     | 1/2 [01:33<01:33, 93.33s/it]Loading checkpoint shards: 100%|██████████| 2/2 [02:08<00:00, 58.95s/it]Loading checkpoint shards: 100%|██████████| 2/2 [02:08<00:00, 64.11s/it]
+  Loaded wikitext2 tokens=16384
+Generating validation split:   0%|          | 0/364608 [00:00<?, ? examples/s]Generating validation split:   3%|▎         | 9120/364608 [00:00<00:06, 51451.67 examples/s]Generating validation split:   5%|▍         | 18229/364608 [00:00<00:06, 55402.81 examples/s]Generating validation split:   8%|▊         | 27647/364608 [00:00<00:05, 57930.85 examples/s]Generating validation split:  10%|█         | 36991/364608 [00:00<00:05, 59298.49 examples/s]Generating validation split:  12%|█▎        | 45576/364608 [00:00<00:05, 59803.96 examples/s]Generating validation split:  12%|█▎        | 45576/364608 [00:00<00:05, 58297.45 examples/s]
+  Loaded c4 tokens=16384
+Computing baseline perplexity on 16384 tokens (wikitext2)...
+Baseline PPL (wikitext2) = 5.5045
+Baseline PPL (c4) = 8.3784
+Capturing calibration stats (var=True, H=True, abs=False)...
+Generating train split:   0%|          | 0/364868892 [00:00<?, ? examples/s]Generating train split:   0%|          | 9178/364868892 [00:00<1:54:13, 53235.63 examples/s]Generating train split:   0%|          | 18137/364868892 [00:00<1:45:35, 57591.11 examples/s]Generating train split:   0%|          | 27276/364868892 [00:00<1:41:55, 59662.67 examples/s]Generating train split:   0%|          | 36862/364868892 [00:00<1:37:48, 62169.63 examples/s]Generating train split:   0%|          | 45854/364868892 [00:00<1:37:46, 62192.40 examples/s]Generating train split:   0%|          | 55073/364868892 [00:00<1:37:07, 62606.82 examples/s]Generating train split:   0%|          | 64140/364868892 [00:01<1:37:11, 62552.85 examples/s]Generating train split:   0%|          | 73387/364868892 [00:01<1:36:26, 63047.79 examples/s]Generating train split:   0%|          | 82339/364868892 [00:01<1:37:32, 62327.36 examples/s]Generating train split:   0%|          | 91398/364868892 [00:01<1:37:35, 62298.77 examples/s]Generating train split:   0%|          | 100344/364868892 [00:01<1:38:01, 62017.91 examples/s]Generating train split:   0%|          | 109336/364868892 [00:01<1:38:06, 61969.97 examples/s]Generating train split:   0%|          | 118215/364868892 [00:01<1:38:43, 61578.18 examples/s]Generating train split:   0%|          | 127363/364868892 [00:02<1:37:58, 62041.82 examples/s]Generating train split:   0%|          | 136630/364868892 [00:02<1:37:03, 62625.91 examples/s]Generating train split:   0%|          | 145869/364868892 [00:02<1:36:24, 63054.32 examples/s]Generating train split:   0%|          | 154999/364868892 [00:02<1:36:47, 62802.76 examples/s]Generating train split:   0%|          | 164342/364868892 [00:02<1:36:10, 63199.45 examples/s]Generating train split:   0%|          | 173282/364868892 [00:02<1:36:34, 62936.33 examples/s]Generating train split:   0%|          | 182003/364868892 [00:02<1:40:46, 60311.07 examples/s]Generating train split:   0%|          | 191256/364868892 [00:03<1:41:50, 59679.90 examples/s]Generating train split:   0%|          | 200508/364868892 [00:03<1:44:28, 58177.68 examples/s]Generating train split:   0%|          | 209378/364868892 [00:03<2:46:09, 36578.77 examples/s]Generating train split:   0%|          | 218473/364868892 [00:03<2:28:23, 40956.10 examples/s]Generating train split:   0%|          | 227618/364868892 [00:04<2:51:45, 35384.80 examples/s]Generating train split:   0%|          | 236617/364868892 [00:04<2:29:50, 40557.14 examples/s]Generating train split:   0%|          | 245816/364868892 [00:04<2:31:04, 40223.52 examples/s]Generating train split:   0%|          | 254993/364868892 [00:04<2:29:48, 40562.92 examples/s]Generating train split:   0%|          | 263922/364868892 [00:05<2:23:41, 42288.29 examples/s]Generating train split:   0%|          | 268486/364868892 [00:05<2:29:13, 40719.72 examples/s]Generating train split:   0%|          | 273202/364868892 [00:05<2:45:58, 36612.67 examples/s]Generating train split:   0%|          | 277868/364868892 [00:05<2:52:39, 35192.36 examples/s]Generating train split:   0%|          | 286955/364868892 [00:05<2:29:36, 40616.88 examples/s]Generating train split:   0%|          | 295901/364868892 [00:05<2:11:29, 46207.88 examples/s]Generating train split:   0%|          | 304853/364868892 [00:05<2:00:41, 50344.05 examples/s]Generating train split:   0%|          | 314057/364868892 [00:06<1:52:28, 54020.65 examples/s]Generating train split:   0%|          | 323150/364868892 [00:06<1:47:29, 56520.99 examples/s]Generating train split:   0%|          | 332325/364868892 [00:06<1:43:38, 58619.79 examples/s]Generating train split:   0%|          | 341256/364868892 [00:06<1:42:09, 59466.94 examples/s]Generating train split:   0%|          | 350356/364868892 [00:06<1:40:31, 60440.21 examples/s]Generating train split:   0%|          | 356317/364868892 [00:06<1:55:25, 52635.01 examples/s]
+  calib tokens=2048
+  Captured stats for 128 modules
+  [1/256] L 0 Q 4bit  m=gptq  gamma=1.00  recon=0.23771  hsens=3.3370e-04  ppl=5.505  delta=+0.000
+  [2/256] L 0 Q 3bit  m=gptq  gamma=1.00  recon=0.56781  hsens=2.0158e-03  ppl=5.505  delta=+0.001
+  [3/256] L 0 K 4bit  m=gptq  gamma=4.00  recon=0.22722  hsens=3.1283e-04  ppl=5.505  delta=+0.000
+  [4/256] L 0 K 3bit  m=gptq  gamma=4.00  recon=0.54265  hsens=1.8954e-03  ppl=5.505  delta=+0.000
+  [5/256] L 0 V 4bit  m=gptq  gamma=4.00  recon=0.19867  hsens=3.6111e-05  ppl=5.505  delta=+0.001
+  [6/256] L 0 V 3bit  m=gptq  gamma=4.00  recon=0.41549  hsens=8.7115e-05  ppl=5.497  delta=-0.008
+  [7/256] L 0 O 4bit  m=gptq  gamma=1.00  recon=0.19622  hsens=5.8270e-08  ppl=5.508  delta=+0.004
+  [8/256] L 0 O 3bit  m=gptq  gamma=1.00  recon=0.46813  hsens=3.3244e-07  ppl=5.508  delta=+0.003
+  [9/256] L 1 Q 4bit  m=gptq  gamma=1.00  recon=0.21008  hsens=1.8257e-03  ppl=5.504  delta=-0.000
+  [10/256] L 1 Q 3bit  m=gptq  gamma=1.00  recon=0.50869  hsens=1.0361e-02  ppl=5.503  delta=-0.001
+  [11/256] L 1 K 4bit  m=gptq  gamma=4.00  recon=0.22651  hsens=3.0353e-03  ppl=5.504  delta=-0.000
+  [12/256] L 1 K 3bit  m=gptq  gamma=4.00  recon=0.54194  hsens=1.7264e-02  ppl=5.506  delta=+0.002
+  [13/256] L 1 V 4bit  m=gptq  gamma=4.00  recon=0.19217  hsens=4.3048e-04  ppl=5.512  delta=+0.007
+  [14/256] L 1 V 3bit  m=gptq  gamma=4.00  recon=0.45435  hsens=1.5233e-03  ppl=5.576  delta=+0.071
+  [15/256] L 1 O 4bit  m=gptq  gamma=1.00  recon=0.23066  hsens=1.6985e-07  ppl=5.508  delta=+0.004
+  [16/256] L 1 O 3bit  m=gptq  gamma=1.00  recon=0.56861  hsens=1.0161e-06  ppl=5.514  delta=+0.009
+  [17/256] L 2 Q 4bit  m=gptq  gamma=1.00  recon=0.22504  hsens=7.4434e-03  ppl=5.505  delta=+0.001
+  [18/256] L 2 Q 3bit  m=gptq  gamma=1.00  recon=0.55932  hsens=4.3027e-02  ppl=5.505  delta=+0.001
+  [19/256] L 2 K 4bit  m=gptq  gamma=4.00  recon=0.23717  hsens=1.3488e-02  ppl=5.505  delta=+0.000
+  [20/256] L 2 K 3bit  m=gptq  gamma=4.00  recon=0.57991  hsens=7.6493e-02  ppl=5.504  delta=-0.001
+  [21/256] L 2 V 4bit  m=gptq  gamma=4.00  recon=0.22111  hsens=1.8355e-03  ppl=5.509  delta=+0.004
+  [22/256] L 2 V 3bit  m=gptq  gamma=4.00  recon=0.54242  hsens=9.1047e-03  ppl=5.508  delta=+0.003
+  [23/256] L 2 O 4bit  m=gptq  gamma=1.00  recon=0.20429  hsens=1.9586e-07  ppl=5.502  delta=-0.003
+  [24/256] L 2 O 3bit  m=gptq  gamma=1.00  recon=0.49648  hsens=1.1475e-06  ppl=5.506  delta=+0.002
+  [25/256] L 3 Q 4bit  m=gptq  gamma=1.00  recon=0.19749  hsens=4.8610e-03  ppl=5.503  delta=-0.001
+  [26/256] L 3 Q 3bit  m=gptq  gamma=1.00  recon=0.48144  hsens=2.7589e-02  ppl=5.508  delta=+0.004
+  [27/256] L 3 K 4bit  m=gptq  gamma=4.00  recon=0.20461  hsens=8.8611e-03  ppl=5.505  delta=+0.000
+  [28/256] L 3 K 3bit  m=gptq  gamma=4.00  recon=0.49457  hsens=4.9709e-02  ppl=5.505  delta=+0.001
+  [29/256] L 3 V 4bit  m=gptq  gamma=4.00  recon=0.19337  hsens=1.4447e-03  ppl=5.508  delta=+0.003
+  [30/256] L 3 V 3bit  m=gptq  gamma=4.00  recon=0.46692  hsens=6.0339e-03  ppl=5.507  delta=+0.002
+  [31/256] L 3 O 4bit  m=gptq  gamma=1.00  recon=0.19864  hsens=4.3462e-07  ppl=5.504  delta=-0.000
+  [32/256] L 3 O 3bit  m=gptq  gamma=1.00  recon=0.48444  hsens=2.5778e-06  ppl=5.505  delta=+0.000
+  [33/256] L 4 Q 4bit  m=gptq  gamma=1.00  recon=0.20466  hsens=6.0834e-03  ppl=5.505  delta=+0.000
+  [34/256] L 4 Q 3bit  m=gptq  gamma=1.00  recon=0.49896  hsens=3.5096e-02  ppl=5.506  delta=+0.002
+  [35/256] L 4 K 4bit  m=gptq  gamma=4.00  recon=0.21013  hsens=1.0212e-02  ppl=5.504  delta=-0.001
+  [36/256] L 4 K 3bit  m=gptq  gamma=4.00  recon=0.50848  hsens=5.8930e-02  ppl=5.508  delta=+0.003
+  [37/256] L 4 V 4bit  m=gptq  gamma=4.00  recon=0.19883  hsens=2.1168e-03  ppl=5.508  delta=+0.004
+  [38/256] L 4 V 3bit  m=gptq  gamma=4.00  recon=0.48308  hsens=9.6932e-03  ppl=5.512  delta=+0.008
+  [39/256] L 4 O 4bit  m=gptq  gamma=1.00  recon=0.19052  hsens=6.3786e-07  ppl=5.503  delta=-0.001
+  [40/256] L 4 O 3bit  m=gptq  gamma=1.00  recon=0.46012  hsens=3.7169e-06  ppl=5.507  delta=+0.003
+  [41/256] L 5 Q 4bit  m=gptq  gamma=1.00  recon=0.19741  hsens=7.4576e-03  ppl=5.504  delta=-0.000
+  [42/256] L 5 Q 3bit  m=gptq  gamma=1.00  recon=0.48006  hsens=4.3166e-02  ppl=5.502  delta=-0.003
+  [43/256] L 5 K 4bit  m=gptq  gamma=4.00  recon=0.20168  hsens=1.2781e-02  ppl=5.505  delta=+0.001
+  [44/256] L 5 K 3bit  m=gptq  gamma=4.00  recon=0.48856  hsens=7.4201e-02  ppl=5.505  delta=+0.000
+  [45/256] L 5 V 4bit  m=gptq  gamma=4.00  recon=0.19309  hsens=2.2159e-03  ppl=5.507  delta=+0.002
+  [46/256] L 5 V 3bit  m=gptq  gamma=4.00  recon=0.46618  hsens=1.0205e-02  ppl=5.513  delta=+0.009
+  [47/256] L 5 O 4bit  m=gptq  gamma=1.00  recon=0.18634  hsens=1.5188e-06  ppl=5.507  delta=+0.002
+  [48/256] L 5 O 3bit  m=gptq  gamma=1.00  recon=0.44934  hsens=8.9160e-06  ppl=5.514  delta=+0.010
+  [49/256] L 6 Q 4bit  m=gptq  gamma=1.00  recon=0.20207  hsens=7.0486e-03  ppl=5.505  delta=+0.000
+  [50/256] L 6 Q 3bit  m=gptq  gamma=1.00  recon=0.49131  hsens=4.0210e-02  ppl=5.511  delta=+0.006
+  [51/256] L 6 K 4bit  m=gptq  gamma=4.00  recon=0.20723  hsens=1.2715e-02  ppl=5.505  delta=+0.001
+  [52/256] L 6 K 3bit  m=gptq  gamma=4.00  recon=0.50221  hsens=7.2408e-02  ppl=5.506  delta=+0.002
+  [53/256] L 6 V 4bit  m=gptq  gamma=4.00  recon=0.19731  hsens=2.3090e-03  ppl=5.508  delta=+0.004
+  [54/256] L 6 V 3bit  m=gptq  gamma=4.00  recon=0.47586  hsens=1.1153e-02  ppl=5.517  delta=+0.012
+  [55/256] L 6 O 4bit  m=gptq  gamma=1.00  recon=0.18424  hsens=1.7496e-06  ppl=5.506  delta=+0.002
+  [56/256] L 6 O 3bit  m=gptq  gamma=1.00  recon=0.44350  hsens=1.0141e-05  ppl=5.512  delta=+0.007
+  [57/256] L 7 Q 4bit  m=gptq  gamma=1.00  recon=0.20695  hsens=8.3703e-03  ppl=5.505  delta=+0.000
+  [58/256] L 7 Q 3bit  m=gptq  gamma=1.00  recon=0.50137  hsens=4.7864e-02  ppl=5.505  delta=+0.001
+  [59/256] L 7 K 4bit  m=gptq  gamma=4.00  recon=0.21198  hsens=1.5271e-02  ppl=5.505  delta=+0.000
+  [60/256] L 7 K 3bit  m=gptq  gamma=4.00  recon=0.51112  hsens=8.7239e-02  ppl=5.506  delta=+0.001
+  [61/256] L 7 V 4bit  m=gptq  gamma=4.00  recon=0.20043  hsens=2.8776e-03  ppl=5.509  delta=+0.004
+  [62/256] L 7 V 3bit  m=gptq  gamma=4.00  recon=0.46950  hsens=1.2577e-02  ppl=5.514  delta=+0.010
+  [63/256] L 7 O 4bit  m=gptq  gamma=1.00  recon=0.18710  hsens=3.6399e-06  ppl=5.507  delta=+0.002
+  [64/256] L 7 O 3bit  m=gptq  gamma=1.00  recon=0.45261  hsens=2.1060e-05  ppl=5.513  delta=+0.009
+  [65/256] L 8 Q 4bit  m=gptq  gamma=1.00  recon=0.19360  hsens=6.9976e-03  ppl=5.505  delta=+0.000
+  [66/256] L 8 Q 3bit  m=gptq  gamma=1.00  recon=0.46907  hsens=3.9781e-02  ppl=5.507  delta=+0.003
+  [67/256] L 8 K 4bit  m=gptq  gamma=4.00  recon=0.19698  hsens=1.2169e-02  ppl=5.505  delta=+0.001
+  [68/256] L 8 K 3bit  m=gptq  gamma=4.00  recon=0.47633  hsens=6.8648e-02  ppl=5.506  delta=+0.002
+  [69/256] L 8 V 4bit  m=gptq  gamma=4.00  recon=0.19173  hsens=2.7351e-03  ppl=5.506  delta=+0.002
+  [70/256] L 8 V 3bit  m=gptq  gamma=4.00  recon=0.45771  hsens=1.2974e-02  ppl=5.510  delta=+0.006
+  [71/256] L 8 O 4bit  m=gptq  gamma=1.00  recon=0.17558  hsens=3.7286e-06  ppl=5.508  delta=+0.003
+  [72/256] L 8 O 3bit  m=gptq  gamma=1.00  recon=0.42128  hsens=2.1318e-05  ppl=5.506  delta=+0.002
+  [73/256] L 9 Q 4bit  m=gptq  gamma=1.00  recon=0.19736  hsens=8.9040e-03  ppl=5.504  delta=-0.000
+  [74/256] L 9 Q 3bit  m=gptq  gamma=1.00  recon=0.47797  hsens=5.0776e-02  ppl=5.508  delta=+0.003
+  [75/256] L 9 K 4bit  m=gptq  gamma=4.00  recon=0.20126  hsens=1.6182e-02  ppl=5.504  delta=-0.001
+  [76/256] L 9 K 3bit  m=gptq  gamma=4.00  recon=0.48585  hsens=9.1736e-02  ppl=5.506  delta=+0.001
+  [77/256] L 9 V 4bit  m=gptq  gamma=4.00  recon=0.19342  hsens=3.1599e-03  ppl=5.507  delta=+0.002
+  [78/256] L 9 V 3bit  m=gptq  gamma=4.00  recon=0.46484  hsens=1.6023e-02  ppl=5.513  delta=+0.009
+  [79/256] L 9 O 4bit  m=gptq  gamma=1.00  recon=0.16761  hsens=5.1508e-06  ppl=5.507  delta=+0.002
+  [80/256] L 9 O 3bit  m=gptq  gamma=1.00  recon=0.39973  hsens=2.9470e-05  ppl=5.508  delta=+0.003
+  [81/256] L10 Q 4bit  m=gptq  gamma=1.00  recon=0.19296  hsens=8.3493e-03  ppl=5.504  delta=-0.001
+  [82/256] L10 Q 3bit  m=gptq  gamma=1.00  recon=0.46610  hsens=4.6633e-02  ppl=5.509  delta=+0.005
+  [83/256] L10 K 4bit  m=gptq  gamma=4.00  recon=0.19413  hsens=1.5519e-02  ppl=5.506  delta=+0.002
+  [84/256] L10 K 3bit  m=gptq  gamma=4.00  recon=0.46845  hsens=8.7260e-02  ppl=5.506  delta=+0.002
+  [85/256] L10 V 4bit  m=gptq  gamma=4.00  recon=0.19156  hsens=2.8395e-03  ppl=5.508  delta=+0.003
+  [86/256] L10 V 3bit  m=gptq  gamma=4.00  recon=0.45631  hsens=1.3458e-02  ppl=5.512  delta=+0.007
+  [87/256] L10 O 4bit  m=gptq  gamma=1.00  recon=0.18128  hsens=7.8154e-06  ppl=5.503  delta=-0.002
+  [88/256] L10 O 3bit  m=gptq  gamma=1.00  recon=0.43710  hsens=4.5374e-05  ppl=5.513  delta=+0.009
+  [89/256] L11 Q 4bit  m=gptq  gamma=1.00  recon=0.19613  hsens=9.4754e-03  ppl=5.505  delta=+0.000
+  [90/256] L11 Q 3bit  m=gptq  gamma=1.00  recon=0.47581  hsens=5.4340e-02  ppl=5.505  delta=+0.000
+  [91/256] L11 K 4bit  m=gptq  gamma=4.00  recon=0.20010  hsens=1.6789e-02  ppl=5.504  delta=-0.000
+  [92/256] L11 K 3bit  m=gptq  gamma=4.00  recon=0.48347  hsens=9.6331e-02  ppl=5.508  delta=+0.003
+  [93/256] L11 V 4bit  m=gptq  gamma=4.00  recon=0.19577  hsens=3.9638e-03  ppl=5.505  delta=+0.000
+  [94/256] L11 V 3bit  m=gptq  gamma=4.00  recon=0.46606  hsens=1.8774e-02  ppl=5.508  delta=+0.003
+  [95/256] L11 O 4bit  m=gptq  gamma=1.00  recon=0.19107  hsens=1.0721e-05  ppl=5.505  delta=+0.001
+  [96/256] L11 O 3bit  m=gptq  gamma=1.00  recon=0.46181  hsens=6.3231e-05  ppl=5.517  delta=+0.012
+  [97/256] L12 Q 4bit  m=gptq  gamma=1.00  recon=0.20739  hsens=1.2356e-02  ppl=5.505  delta=+0.000
+  [98/256] L12 Q 3bit  m=gptq  gamma=1.00  recon=0.49889  hsens=6.8976e-02  ppl=5.510  delta=+0.006
+  [99/256] L12 K 4bit  m=gptq  gamma=4.00  recon=0.20722  hsens=2.1448e-02  ppl=5.505  delta=+0.001
+  [100/256] L12 K 3bit  m=gptq  gamma=4.00  recon=0.50083  hsens=1.2298e-01  ppl=5.507  delta=+0.003
+  [101/256] L12 V 4bit  m=gptq  gamma=4.00  recon=0.20113  hsens=4.4848e-03  ppl=5.507  delta=+0.003
+  [102/256] L12 V 3bit  m=gptq  gamma=4.00  recon=0.47976  hsens=2.1905e-02  ppl=5.516  delta=+0.012
+  [103/256] L12 O 4bit  m=gptq  gamma=1.00  recon=0.17856  hsens=1.2404e-05  ppl=5.507  delta=+0.003
+  [104/256] L12 O 3bit  m=gptq  gamma=1.00  recon=0.42850  hsens=7.1990e-05  ppl=5.511  delta=+0.007
+  [105/256] L13 Q 4bit  m=gptq  gamma=1.00  recon=0.19438  hsens=9.4926e-03  ppl=5.506  delta=+0.001
+  [106/256] L13 Q 3bit  m=gptq  gamma=1.00  recon=0.47089  hsens=5.4255e-02  ppl=5.508  delta=+0.003
+  [107/256] L13 K 4bit  m=gptq  gamma=4.00  recon=0.19993  hsens=1.7915e-02  ppl=5.505  delta=+0.001
+  [108/256] L13 K 3bit  m=gptq  gamma=4.00  recon=0.48289  hsens=1.0426e-01  ppl=5.509  delta=+0.005
+  [109/256] L13 V 4bit  m=gptq  gamma=4.00  recon=0.19337  hsens=4.1471e-03  ppl=5.507  delta=+0.003
+  [110/256] L13 V 3bit  m=gptq  gamma=4.00  recon=0.46145  hsens=2.0156e-02  ppl=5.510  delta=+0.006
+  [111/256] L13 O 4bit  m=gptq  gamma=1.00  recon=0.17608  hsens=1.3544e-05  ppl=5.507  delta=+0.003
+  [112/256] L13 O 3bit  m=gptq  gamma=1.00  recon=0.42387  hsens=7.8719e-05  ppl=5.509  delta=+0.004
+  [113/256] L14 Q 4bit  m=gptq  gamma=1.00  recon=0.19856  hsens=1.0413e-02  ppl=5.505  delta=+0.000
+  [114/256] L14 Q 3bit  m=gptq  gamma=1.00  recon=0.48195  hsens=6.0673e-02  ppl=5.508  delta=+0.003
+  [115/256] L14 K 4bit  m=gptq  gamma=4.00  recon=0.20725  hsens=1.6897e-02  ppl=5.505  delta=+0.000
+  [116/256] L14 K 3bit  m=gptq  gamma=4.00  recon=0.50014  hsens=9.8788e-02  ppl=5.505  delta=+0.001
+  [117/256] L14 V 4bit  m=gptq  gamma=4.00  recon=0.19857  hsens=6.3408e-03  ppl=5.508  delta=+0.004
+  [118/256] L14 V 3bit  m=gptq  gamma=4.00  recon=0.47000  hsens=3.0339e-02  ppl=5.517  delta=+0.013
+  [119/256] L14 O 4bit  m=gptq  gamma=1.00  recon=0.18967  hsens=1.9614e-05  ppl=5.507  delta=+0.003
+  [120/256] L14 O 3bit  m=gptq  gamma=1.00  recon=0.46119  hsens=1.1412e-04  ppl=5.516  delta=+0.012
+  [121/256] L15 Q 4bit  m=gptq  gamma=1.00  recon=0.20292  hsens=1.3155e-02  ppl=5.504  delta=-0.000
+  [122/256] L15 Q 3bit  m=gptq  gamma=1.00  recon=0.48844  hsens=7.4888e-02  ppl=5.511  delta=+0.007
+  [123/256] L15 K 4bit  m=gptq  gamma=4.00  recon=0.21485  hsens=2.2084e-02  ppl=5.505  delta=+0.001
+  [124/256] L15 K 3bit  m=gptq  gamma=4.00  recon=0.51154  hsens=1.2421e-01  ppl=5.508  delta=+0.003
+  [125/256] L15 V 4bit  m=gptq  gamma=4.00  recon=0.19859  hsens=7.3861e-03  ppl=5.510  delta=+0.005
+  [126/256] L15 V 3bit  m=gptq  gamma=4.00  recon=0.47322  hsens=3.6820e-02  ppl=5.508  delta=+0.003
+  [127/256] L15 O 4bit  m=gptq  gamma=1.00  recon=0.18131  hsens=2.4091e-05  ppl=5.507  delta=+0.002
+  [128/256] L15 O 3bit  m=gptq  gamma=1.00  recon=0.43757  hsens=1.4105e-04  ppl=5.516  delta=+0.012
+  [129/256] L16 Q 4bit  m=gptq  gamma=1.00  recon=0.19483  hsens=1.1601e-02  ppl=5.505  delta=+0.001
+  [130/256] L16 Q 3bit  m=gptq  gamma=1.00  recon=0.47144  hsens=6.7013e-02  ppl=5.509  delta=+0.005
+  [131/256] L16 K 4bit  m=gptq  gamma=4.00  recon=0.20479  hsens=2.0223e-02  ppl=5.503  delta=-0.001
+  [132/256] L16 K 3bit  m=gptq  gamma=4.00  recon=0.49235  hsens=1.1756e-01  ppl=5.505  delta=+0.001
+  [133/256] L16 V 4bit  m=gptq  gamma=4.00  recon=0.19563  hsens=6.9045e-03  ppl=5.508  delta=+0.003
+  [134/256] L16 V 3bit  m=gptq  gamma=4.00  recon=0.46506  hsens=3.4555e-02  ppl=5.513  delta=+0.008
+  [135/256] L16 O 4bit  m=gptq  gamma=1.00  recon=0.17933  hsens=2.3889e-05  ppl=5.505  delta=+0.001
+  [136/256] L16 O 3bit  m=gptq  gamma=1.00  recon=0.43146  hsens=1.3841e-04  ppl=5.511  delta=+0.007
+  [137/256] L17 Q 4bit  m=gptq  gamma=1.00  recon=0.19845  hsens=1.1125e-02  ppl=5.505  delta=+0.000
+  [138/256] L17 Q 3bit  m=gptq  gamma=1.00  recon=0.48187  hsens=6.4747e-02  ppl=5.508  delta=+0.004
+  [139/256] L17 K 4bit  m=gptq  gamma=4.00  recon=0.20638  hsens=1.7672e-02  ppl=5.505  delta=+0.001
+  [140/256] L17 K 3bit  m=gptq  gamma=4.00  recon=0.49804  hsens=1.0205e-01  ppl=5.509  delta=+0.004
+  [141/256] L17 V 4bit  m=gptq  gamma=4.00  recon=0.20224  hsens=6.8809e-03  ppl=5.502  delta=-0.003
+  [142/256] L17 V 3bit  m=gptq  gamma=4.00  recon=0.48435  hsens=3.5957e-02  ppl=5.511  delta=+0.007
+  [143/256] L17 O 4bit  m=gptq  gamma=1.00  recon=0.19567  hsens=2.6835e-05  ppl=5.506  delta=+0.002
+  [144/256] L17 O 3bit  m=gptq  gamma=1.00  recon=0.47926  hsens=1.5841e-04  ppl=5.510  delta=+0.006
+  [145/256] L18 Q 4bit  m=gptq  gamma=1.00  recon=0.19946  hsens=1.3769e-02  ppl=5.505  delta=+0.001
+  [146/256] L18 Q 3bit  m=gptq  gamma=1.00  recon=0.48509  hsens=8.0374e-02  ppl=5.507  delta=+0.002
+  [147/256] L18 K 4bit  m=gptq  gamma=4.00  recon=0.20815  hsens=2.0512e-02  ppl=5.505  delta=+0.001
+  [148/256] L18 K 3bit  m=gptq  gamma=4.00  recon=0.50193  hsens=1.1875e-01  ppl=5.506  delta=+0.001
+  [149/256] L18 V 4bit  m=gptq  gamma=4.00  recon=0.20593  hsens=8.4202e-03  ppl=5.506  delta=+0.001
+  [150/256] L18 V 3bit  m=gptq  gamma=4.00  recon=0.49065  hsens=4.3235e-02  ppl=5.518  delta=+0.013
+  [151/256] L18 O 4bit  m=gptq  gamma=1.00  recon=0.18741  hsens=3.0737e-05  ppl=5.506  delta=+0.002
+  [152/256] L18 O 3bit  m=gptq  gamma=1.00  recon=0.45332  hsens=1.7876e-04  ppl=5.510  delta=+0.006
+  [153/256] L19 Q 4bit  m=gptq  gamma=1.00  recon=0.19759  hsens=1.2697e-02  ppl=5.504  delta=-0.001
+  [154/256] L19 Q 3bit  m=gptq  gamma=1.00  recon=0.48009  hsens=7.4063e-02  ppl=5.508  delta=+0.003
+  [155/256] L19 K 4bit  m=gptq  gamma=4.00  recon=0.20984  hsens=2.0277e-02  ppl=5.505  delta=+0.001
+  [156/256] L19 K 3bit  m=gptq  gamma=4.00  recon=0.50460  hsens=1.1659e-01  ppl=5.506  delta=+0.001
+  [157/256] L19 V 4bit  m=gptq  gamma=4.00  recon=0.20033  hsens=9.5829e-03  ppl=5.505  delta=+0.000
+  [158/256] L19 V 3bit  m=gptq  gamma=4.00  recon=0.47764  hsens=5.0049e-02  ppl=5.512  delta=+0.008
+  [159/256] L19 O 4bit  m=gptq  gamma=1.00  recon=0.18802  hsens=3.6489e-05  ppl=5.506  delta=+0.001
+  [160/256] L19 O 3bit  m=gptq  gamma=1.00  recon=0.45439  hsens=2.1352e-04  ppl=5.515  delta=+0.010
+  [161/256] L20 Q 4bit  m=gptq  gamma=1.00  recon=0.20162  hsens=1.3646e-02  ppl=5.505  delta=+0.000
+  [162/256] L20 Q 3bit  m=gptq  gamma=1.00  recon=0.49038  hsens=7.9754e-02  ppl=5.505  delta=+0.001
+  [163/256] L20 K 4bit  m=gptq  gamma=4.00  recon=0.21350  hsens=2.0943e-02  ppl=5.505  delta=+0.001
+  [164/256] L20 K 3bit  m=gptq  gamma=4.00  recon=0.51396  hsens=1.2117e-01  ppl=5.506  delta=+0.002
+  [165/256] L20 V 4bit  m=gptq  gamma=4.00  recon=0.20030  hsens=1.0422e-02  ppl=5.505  delta=+0.000
+  [166/256] L20 V 3bit  m=gptq  gamma=4.00  recon=0.47741  hsens=5.4476e-02  ppl=5.507  delta=+0.003
+  [167/256] L20 O 4bit  m=gptq  gamma=1.00  recon=0.19110  hsens=3.0994e-05  ppl=5.506  delta=+0.002
+  [168/256] L20 O 3bit  m=gptq  gamma=1.00  recon=0.46426  hsens=1.8082e-04  ppl=5.508  delta=+0.004
+  [169/256] L21 Q 4bit  m=gptq  gamma=1.00  recon=0.20091  hsens=1.3549e-02  ppl=5.505  delta=+0.000
+  [170/256] L21 Q 3bit  m=gptq  gamma=1.00  recon=0.48903  hsens=7.9505e-02  ppl=5.507  delta=+0.002
+  [171/256] L21 K 4bit  m=gptq  gamma=4.00  recon=0.21185  hsens=2.0916e-02  ppl=5.505  delta=+0.000
+  [172/256] L21 K 3bit  m=gptq  gamma=4.00  recon=0.51079  hsens=1.2111e-01  ppl=5.506  delta=+0.001
+  [173/256] L21 V 4bit  m=gptq  gamma=4.00  recon=0.20149  hsens=1.0910e-02  ppl=5.505  delta=+0.001
+  [174/256] L21 V 3bit  m=gptq  gamma=4.00  recon=0.48094  hsens=5.7262e-02  ppl=5.508  delta=+0.003
+  [175/256] L21 O 4bit  m=gptq  gamma=1.00  recon=0.18434  hsens=3.1306e-05  ppl=5.506  delta=+0.002
+  [176/256] L21 O 3bit  m=gptq  gamma=1.00  recon=0.44425  hsens=1.8235e-04  ppl=5.504  delta=-0.000
+  [177/256] L22 Q 4bit  m=gptq  gamma=1.00  recon=0.20149  hsens=1.3167e-02  ppl=5.505  delta=+0.000
+  [178/256] L22 Q 3bit  m=gptq  gamma=1.00  recon=0.49122  hsens=7.7593e-02  ppl=5.505  delta=+0.001
+  [179/256] L22 K 4bit  m=gptq  gamma=4.00  recon=0.21148  hsens=2.0077e-02  ppl=5.504  delta=-0.000
+  [180/256] L22 K 3bit  m=gptq  gamma=4.00  recon=0.51053  hsens=1.1635e-01  ppl=5.505  delta=+0.001
+  [181/256] L22 V 4bit  m=gptq  gamma=4.00  recon=0.19808  hsens=1.1384e-02  ppl=5.505  delta=+0.001
+  [182/256] L22 V 3bit  m=gptq  gamma=4.00  recon=0.47834  hsens=6.2767e-02  ppl=5.510  delta=+0.005
+  [183/256] L22 O 4bit  m=gptq  gamma=1.00  recon=0.18827  hsens=1.9320e-05  ppl=5.505  delta=+0.001
+  [184/256] L22 O 3bit  m=gptq  gamma=1.00  recon=0.45615  hsens=1.1348e-04  ppl=5.506  delta=+0.001
+  [185/256] L23 Q 4bit  m=gptq  gamma=1.00  recon=0.20015  hsens=1.3150e-02  ppl=5.505  delta=+0.000
+  [186/256] L23 Q 3bit  m=gptq  gamma=1.00  recon=0.48606  hsens=7.6830e-02  ppl=5.507  delta=+0.002
+  [187/256] L23 K 4bit  m=gptq  gamma=4.00  recon=0.20782  hsens=1.9924e-02  ppl=5.505  delta=+0.001
+  [188/256] L23 K 3bit  m=gptq  gamma=4.00  recon=0.50168  hsens=1.1586e-01  ppl=5.506  delta=+0.002
+  [189/256] L23 V 4bit  m=gptq  gamma=4.00  recon=0.19660  hsens=1.2027e-02  ppl=5.506  delta=+0.002
+  [190/256] L23 V 3bit  m=gptq  gamma=4.00  recon=0.47435  hsens=6.6467e-02  ppl=5.507  delta=+0.002
+  [191/256] L23 O 4bit  m=gptq  gamma=1.00  recon=0.18879  hsens=2.8343e-05  ppl=5.504  delta=-0.000
+  [192/256] L23 O 3bit  m=gptq  gamma=1.00  recon=0.45970  hsens=1.6707e-04  ppl=5.507  delta=+0.002
+  [193/256] L24 Q 4bit  m=gptq  gamma=1.00  recon=0.19864  hsens=1.4570e-02  ppl=5.507  delta=+0.003
+  [194/256] L24 Q 3bit  m=gptq  gamma=1.00  recon=0.48273  hsens=8.5553e-02  ppl=5.508  delta=+0.004
+  [195/256] L24 K 4bit  m=gptq  gamma=4.00  recon=0.20981  hsens=2.2511e-02  ppl=5.505  delta=+0.000
+  [196/256] L24 K 3bit  m=gptq  gamma=4.00  recon=0.50404  hsens=1.2938e-01  ppl=5.503  delta=-0.001
+  [197/256] L24 V 4bit  m=gptq  gamma=4.00  recon=0.19471  hsens=1.3613e-02  ppl=5.504  delta=-0.000
+  [198/256] L24 V 3bit  m=gptq  gamma=4.00  recon=0.46791  hsens=7.4522e-02  ppl=5.510  delta=+0.005
+  [199/256] L24 O 4bit  m=gptq  gamma=1.00  recon=0.20571  hsens=2.9039e-05  ppl=5.506  delta=+0.001
+  [200/256] L24 O 3bit  m=gptq  gamma=1.00  recon=0.50079  hsens=1.7165e-04  ppl=5.510  delta=+0.005
+  [201/256] L25 Q 4bit  m=gptq  gamma=1.00  recon=0.19847  hsens=1.4638e-02  ppl=5.505  delta=+0.000
+  [202/256] L25 Q 3bit  m=gptq  gamma=1.00  recon=0.48139  hsens=8.5790e-02  ppl=5.503  delta=-0.002
+  [203/256] L25 K 4bit  m=gptq  gamma=4.00  recon=0.20821  hsens=2.1653e-02  ppl=5.505  delta=+0.001
+  [204/256] L25 K 3bit  m=gptq  gamma=4.00  recon=0.50212  hsens=1.2564e-01  ppl=5.509  delta=+0.004
+  [205/256] L25 V 4bit  m=gptq  gamma=4.00  recon=0.19585  hsens=1.5368e-02  ppl=5.508  delta=+0.003
+  [206/256] L25 V 3bit  m=gptq  gamma=4.00  recon=0.47052  hsens=8.4003e-02  ppl=5.516  delta=+0.012
+  [207/256] L25 O 4bit  m=gptq  gamma=1.00  recon=0.20417  hsens=3.0274e-05  ppl=5.505  delta=+0.001
+  [208/256] L25 O 3bit  m=gptq  gamma=1.00  recon=0.49563  hsens=1.7524e-04  ppl=5.505  delta=+0.000
+  [209/256] L26 Q 4bit  m=gptq  gamma=1.00  recon=0.20082  hsens=1.3626e-02  ppl=5.504  delta=-0.000
+  [210/256] L26 Q 3bit  m=gptq  gamma=1.00  recon=0.48863  hsens=8.0285e-02  ppl=5.507  delta=+0.003
+  [211/256] L26 K 4bit  m=gptq  gamma=4.00  recon=0.21333  hsens=1.9731e-02  ppl=5.506  delta=+0.002
+  [212/256] L26 K 3bit  m=gptq  gamma=4.00  recon=0.51389  hsens=1.1438e-01  ppl=5.508  delta=+0.003
+  [213/256] L26 V 4bit  m=gptq  gamma=4.00  recon=0.20027  hsens=1.5993e-02  ppl=5.505  delta=+0.000
+  [214/256] L26 V 3bit  m=gptq  gamma=4.00  recon=0.48117  hsens=8.7139e-02  ppl=5.509  delta=+0.005
+  [215/256] L26 O 4bit  m=gptq  gamma=1.00  recon=0.19517  hsens=3.4515e-05  ppl=5.505  delta=+0.000
+  [216/256] L26 O 3bit  m=gptq  gamma=1.00  recon=0.47441  hsens=2.0476e-04  ppl=5.507  delta=+0.002
+  [217/256] L27 Q 4bit  m=gptq  gamma=1.00  recon=0.19815  hsens=1.4012e-02  ppl=5.504  delta=-0.001
+  [218/256] L27 Q 3bit  m=gptq  gamma=1.00  recon=0.48001  hsens=8.1782e-02  ppl=5.505  delta=+0.001
+  [219/256] L27 K 4bit  m=gptq  gamma=4.00  recon=0.20346  hsens=2.0289e-02  ppl=5.504  delta=-0.000
+  [220/256] L27 K 3bit  m=gptq  gamma=4.00  recon=0.48956  hsens=1.1717e-01  ppl=5.508  delta=+0.004
+  [221/256] L27 V 4bit  m=gptq  gamma=4.00  recon=0.19345  hsens=1.4697e-02  ppl=5.506  delta=+0.002
+  [222/256] L27 V 3bit  m=gptq  gamma=4.00  recon=0.46797  hsens=8.3483e-02  ppl=5.506  delta=+0.001
+  [223/256] L27 O 4bit  m=gptq  gamma=1.00  recon=0.21165  hsens=4.9559e-05  ppl=5.504  delta=-0.000
+  [224/256] L27 O 3bit  m=gptq  gamma=1.00  recon=0.51758  hsens=2.9435e-04  ppl=5.505  delta=+0.000
+  [225/256] L28 Q 4bit  m=gptq  gamma=1.00  recon=0.20468  hsens=1.3536e-02  ppl=5.505  delta=+0.001
+  [226/256] L28 Q 3bit  m=gptq  gamma=1.00  recon=0.49715  hsens=7.9719e-02  ppl=5.506  delta=+0.001
+  [227/256] L28 K 4bit  m=gptq  gamma=4.00  recon=0.22554  hsens=1.9545e-02  ppl=5.504  delta=-0.001
+  [228/256] L28 K 3bit  m=gptq  gamma=4.00  recon=0.53901  hsens=1.1226e-01  ppl=5.511  delta=+0.007
+  [229/256] L28 V 4bit  m=gptq  gamma=4.00  recon=0.20414  hsens=2.0934e-02  ppl=5.505  delta=+0.000
+  [230/256] L28 V 3bit  m=gptq  gamma=4.00  recon=0.48751  hsens=1.1141e-01  ppl=5.510  delta=+0.006
+  [231/256] L28 O 4bit  m=gptq  gamma=1.00  recon=0.20598  hsens=6.7539e-05  ppl=5.506  delta=+0.002
+  [232/256] L28 O 3bit  m=gptq  gamma=1.00  recon=0.50186  hsens=3.9520e-04  ppl=5.509  delta=+0.005
+  [233/256] L29 Q 4bit  m=gptq  gamma=1.00  recon=0.20786  hsens=1.5400e-02  ppl=5.504  delta=-0.001
+  [234/256] L29 Q 3bit  m=gptq  gamma=1.00  recon=0.50134  hsens=8.9436e-02  ppl=5.508  delta=+0.003
+  [235/256] L29 K 4bit  m=gptq  gamma=4.00  recon=0.22094  hsens=1.9975e-02  ppl=5.505  delta=+0.000
+  [236/256] L29 K 3bit  m=gptq  gamma=4.00  recon=0.52505  hsens=1.1242e-01  ppl=5.508  delta=+0.004
+  [237/256] L29 V 4bit  m=gptq  gamma=4.00  recon=0.20093  hsens=3.0065e-02  ppl=5.506  delta=+0.001
+  [238/256] L29 V 3bit  m=gptq  gamma=4.00  recon=0.47723  hsens=1.5815e-01  ppl=5.513  delta=+0.009
+  [239/256] L29 O 4bit  m=gptq  gamma=1.00  recon=0.18693  hsens=1.5478e-04  ppl=5.504  delta=-0.000
+  [240/256] L29 O 3bit  m=gptq  gamma=1.00  recon=0.45152  hsens=9.0283e-04  ppl=5.506  delta=+0.002
+  [241/256] L30 Q 4bit  m=gptq  gamma=1.00  recon=0.20847  hsens=1.4504e-02  ppl=5.505  delta=+0.001
+  [242/256] L30 Q 3bit  m=gptq  gamma=1.00  recon=0.50543  hsens=8.4823e-02  ppl=5.509  delta=+0.005
+  [243/256] L30 K 4bit  m=gptq  gamma=4.00  recon=0.22452  hsens=1.8287e-02  ppl=5.504  delta=-0.000
+  [244/256] L30 K 3bit  m=gptq  gamma=4.00  recon=0.53638  hsens=1.0466e-01  ppl=5.510  delta=+0.005
+  [245/256] L30 V 4bit  m=gptq  gamma=4.00  recon=0.21110  hsens=3.2809e-02  ppl=5.506  delta=+0.002
+  [246/256] L30 V 3bit  m=gptq  gamma=4.00  recon=0.50127  hsens=1.7181e-01  ppl=5.510  delta=+0.005
+  [247/256] L30 O 4bit  m=gptq  gamma=1.00  recon=0.19425  hsens=1.3781e-04  ppl=5.504  delta=-0.000
+  [248/256] L30 O 3bit  m=gptq  gamma=1.00  recon=0.47355  hsens=8.1562e-04  ppl=5.505  delta=+0.001
+  [249/256] L31 Q 4bit  m=gptq  gamma=1.00  recon=0.20640  hsens=1.3367e-02  ppl=5.504  delta=-0.000
+  [250/256] L31 Q 3bit  m=gptq  gamma=1.00  recon=0.50063  hsens=7.8662e-02  ppl=5.509  delta=+0.004
+  [251/256] L31 K 4bit  m=gptq  gamma=4.00  recon=0.22498  hsens=1.7485e-02  ppl=5.505  delta=+0.001
+  [252/256] L31 K 3bit  m=gptq  gamma=4.00  recon=0.53544  hsens=9.9727e-02  ppl=5.504  delta=-0.000
+  [253/256] L31 V 4bit  m=gptq  gamma=4.00  recon=0.21130  hsens=3.3669e-02  ppl=5.506  delta=+0.002
+  [254/256] L31 V 3bit  m=gptq  gamma=4.00  recon=0.50407  hsens=1.7987e-01  ppl=5.507  delta=+0.002
+  [255/256] L31 O 4bit  m=gptq  gamma=1.00  recon=0.19211  hsens=2.0706e-04  ppl=5.506  delta=+0.001
+  [256/256] L31 O 3bit  m=gptq  gamma=1.00  recon=0.46760  hsens=1.2252e-03  ppl=5.508  delta=+0.004
+
+--- Mixed-Precision Experiment (dominant component: V) ---
+  Sum(PPL delta)@3bit per component: {'Q': 0.0857, 'K': 0.069, 'V': 0.268, 'O': 0.1597}
+  Share CI Q : mean=0.148 95% CI=[0.099, 0.198]
+  Share CI K : mean=0.119 95% CI=[0.077, 0.165]
+  Share CI V : mean=0.457 95% CI=[0.358, 0.580]
+  Share CI O : mean=0.276 95% CI=[0.215, 0.345]
+  MP [uniform_4bit                  ] avg=4.00bit  ppl=5.6376  delta=+0.1331
+  MP [uniform_3bit                  ] avg=3.00bit  ppl=7.1122  delta=+1.6077
+  MP [ca_V_at_4_rest_3              ] avg=3.25bit  ppl=5.9794  delta=+0.4749
+  MP [inv_V_at_3_rest_4             ] avg=3.75bit  ppl=6.0815  delta=+0.5770
+Saved JSON: ./output/quant_sensitivity/mistral-7b_quant_sensitivity_gptq_g128.json
+
+==========================================================================================
+Correlation summary: mistral-7b [method=gptq]
+==========================================================================================
+Metric (x) vs PPL Delta (y)          Bits   Proj Group Spearman r  Pearson r
+------------------------------------------------------------------------------------------
+MP Energy Ratio                         4 Q/O (square)    -0.1170    -0.0930
+Entry Density                           4 Q/O (square)    -0.1898    -0.0827
+N Outliers                              4 Q/O (square)    -0.0602    -0.0819
+Kurtosis                                4 Q/O (square)    -0.1951    -0.0181
+MP Energy Ratio                         4 K/V (rect/GQA)    -0.4800    -0.4395
+Entry Density                           4 K/V (rect/GQA)    -0.5329    -0.3328
+N Outliers                              4 K/V (rect/GQA)    -0.4800    -0.4231
+Kurtosis                                4 K/V (rect/GQA)    -0.5130    -0.2266
+MP Energy Ratio                         3 Q/O (square)     0.0958     0.0030
+Entry Density                           3 Q/O (square)    -0.0675    -0.2017
+N Outliers                              3 Q/O (square)     0.1626    -0.0214
+Kurtosis                                3 Q/O (square)     0.0212    -0.0786
+MP Energy Ratio                         3 K/V (rect/GQA)    -0.6069    -0.2727
+Entry Density                           3 K/V (rect/GQA)    -0.5874    -0.2249
+N Outliers                              3 K/V (rect/GQA)    -0.5935    -0.2578
+Kurtosis                                3 K/V (rect/GQA)    -0.5556    -0.1413
+==========================================================================================
+
+Saved scatter plot: ./output/quant_sensitivity/mistral-7b_gptq_quant_scatter.png
+Saved heatmap: ./output/quant_sensitivity/mistral-7b_gptq_quant_heatmap_4bit.png
+Saved heatmap: ./output/quant_sensitivity/mistral-7b_gptq_quant_heatmap_3bit.png
+All results saved: ./output/quant_sensitivity/all_quant_sensitivity_gptq_g128.json
+
+real	20m4.895s
+user	18m2.794s
+sys	1m2.972s
+COMPLETED mistral-7b (method=gptq) at Sat Apr 18 14:51:30 EDT 2026

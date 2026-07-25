@@ -1,0 +1,31 @@
+cff-version: 1.2.0
+message: "If you use this code or these results, please cite the paper below."
+title: "Component Type, Not Reconstruction Error, Predicts Attention Quantization Sensitivity"
+abstract: >-
+  We quantize one attention projection at a time across nine open-weight language models
+  (1.3B-8B parameters) under RTN and GPTQ at 3 and 4 bits, recording reconstruction error,
+  perplexity change, and activation-weighted quantization error for 3,808 distinct
+  measurements. Reconstruction error is a weak within-component predictor of perplexity
+  sensitivity (median R^2 = 0.044); component type and layer identity both carry more
+  information; V projections dominate in seven of nine models; and activation-weighted
+  quantization error is a substantially better V-projection predictor.
+type: software
+authors:
+  - family-names: Dewage
+    given-names: Kasun
+    affiliation: University of Central Florida
+  - family-names: Pensky
+    given-names: Marianna
+    affiliation: University of Central Florida
+  - family-names: De Silva
+    given-names: Suranadi
+    affiliation: University of Central Florida
+keywords:
+  - post-training quantization
+  - large language models
+  - attention projections
+  - mixed-precision quantization
+  - sensitivity analysis
+license: MIT
+repository-code: "https://github.com/Kasun-Dewage/What-predicts-Quantization-Sensitivity-2026"
+date-released: 2026-01-01

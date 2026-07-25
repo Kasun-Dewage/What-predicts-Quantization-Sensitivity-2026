@@ -1,0 +1,14 @@
+{
+  "python.analysis.extraPaths": ["./src"],
+  "python.terminal.activateEnvironment": true,
+  "files.trimTrailingWhitespace": true,
+  "files.insertFinalNewline": true,
+  "files.eol": "\n",
+  "[python]": {
+    "editor.tabSize": 4,
+    "editor.rulers": [100]
+  },
+  "[markdown]": {
+    "editor.wordWrap": "on"
+  }
+}

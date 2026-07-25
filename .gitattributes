@@ -1,0 +1,14 @@
+* text=auto eol=lf
+
+*.py    text diff=python
+*.md    text
+*.sh    text eol=lf
+*.json  text
+
+*.pdf   binary
+*.png   binary
+*.jpg   binary
+
+# Keep language stats focused on the actual source
+results/**  linguist-documentation
+paper/**    linguist-documentation
